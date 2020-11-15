@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.vinado.boot</groupId>
-    <artifactId>spring-boot-dkim-signer</artifactId>
+    <artifactId>spring-boot-dkim-javamail</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>spring-boot-dkim-signer</name>
+    <name>spring-boot-dkim-javamail</name>
 
     <properties>
         <java.version>1.8</java.version>

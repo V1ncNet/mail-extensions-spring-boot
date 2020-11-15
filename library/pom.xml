@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-boot-dkim-signer</artifactId>
+        <artifactId>spring-boot-dkim-javamail</artifactId>
         <groupId>de.vinado.boot</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-boot-dkim-lib</artifactId>
+    <groupId>de.vinado.spring</groupId>
+    <artifactId>dkim-javamail</artifactId>
 
     <dependencies>
         <dependency>
