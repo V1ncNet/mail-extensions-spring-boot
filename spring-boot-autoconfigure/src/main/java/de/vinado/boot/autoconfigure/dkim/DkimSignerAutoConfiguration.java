@@ -31,7 +31,7 @@ import java.util.Properties;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(JavaMailSender.class)
 @EnableConfigurationProperties({DkimProperties.class, MailProperties.class})
-@ConditionalOnProperty(prefix = "dkim", name = "private-key")
+@ConditionalOnProperty(prefix = "dkim", name = {"selector", "signing-domain", "private-key"})
 class DkimSignerAutoConfiguration {
 
     @Bean
