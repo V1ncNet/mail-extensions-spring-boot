@@ -12,6 +12,8 @@
 
     <groupId>de.vinado.spring</groupId>
     <artifactId>dkim-javamail</artifactId>
+    <description>Adapts the DKIM library to String's JavaMailSender</description>
+    <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
 
     <dependencies>
         <dependency>
@@ -37,18 +39,4 @@
             <version>1.4.0</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

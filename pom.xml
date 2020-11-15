@@ -9,6 +9,32 @@
     <packaging>pom</packaging>
 
     <name>spring-boot-dkim-javamail</name>
+    <description>Autoconfigureable Spring JavaMail extension</description>
+    <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Vincent Nadoll</name>
+            <email>vincent.nadoll@gmail.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/V1ncNet/spring-boot-dkim-javamail.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-dkim-javamail.git</developerConnection>
+        <url>https://github.com/V1ncNet/spring-boot-dkim-javamail</url>
+        <tag>v@{project.version}</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/V1ncNet/spring-boot-dkim-javamail/issues</url>
+    </issueManagement>
 
     <properties>
         <java.version>1.8</java.version>
@@ -21,4 +47,25 @@
         <module>spring-boot-autoconfigure</module>
         <module>library</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
