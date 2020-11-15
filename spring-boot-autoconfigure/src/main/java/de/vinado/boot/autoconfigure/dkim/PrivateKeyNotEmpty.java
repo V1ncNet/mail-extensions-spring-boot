@@ -1,4 +1,4 @@
-package de.vinado.boot.dkim;
+package de.vinado.boot.autoconfigure.dkim;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;

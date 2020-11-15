@@ -1,4 +1,4 @@
-package de.vinado.boot.dkim;
+package de.vinado.boot.autoconfigure.dkim;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package de.vinado.boot.dkim.javamail;
+package de.vinado.spring.mail.javamail.dkim;
 
 import lombok.extern.slf4j.Slf4j;
 import net.markenwerk.utils.mail.dkim.DkimMessage;

@@ -1,6 +1,6 @@
-package de.vinado.boot.dkim;
+package de.vinado.boot.autoconfigure.dkim;
 
-import de.vinado.boot.dkim.javamail.DkimJavaMailSender;
+import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSender;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
