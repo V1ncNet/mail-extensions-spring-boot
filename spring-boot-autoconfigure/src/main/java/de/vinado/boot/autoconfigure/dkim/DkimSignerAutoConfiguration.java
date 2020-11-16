@@ -46,7 +46,7 @@ class DkimSignerAutoConfiguration {
 
     private void applyProperties(DkimProperties properties, DkimSigner signer) {
         DkimProperties.SignerProperties signerProperties = properties.getSigner();
-        signer.setHeaderCanonicalization(signer.getHeaderCanonicalization());
+        signer.setHeaderCanonicalization(signerProperties.getHeaderCanonicalization());
         signer.setBodyCanonicalization(signerProperties.getBodyCanonicalization());
         signer.setCheckDomainKey(signerProperties.isCheckDomainKey());
         signer.setSigningAlgorithm(signerProperties.getSigningAlgorithm());
