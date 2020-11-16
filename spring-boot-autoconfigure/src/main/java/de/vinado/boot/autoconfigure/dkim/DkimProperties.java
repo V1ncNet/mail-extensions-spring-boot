@@ -3,6 +3,7 @@ package de.vinado.boot.autoconfigure.dkim;
 import net.markenwerk.utils.mail.dkim.Canonicalization;
 import net.markenwerk.utils.mail.dkim.SigningAlgorithm;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.util.StringUtils;
 
 /**
  * Configuration properties for DKIM signing support.
@@ -65,7 +66,7 @@ public class DkimProperties {
         private boolean copyHeaderFields = false;
 
         public String getIdentity() {
-            return identity;
+            return StringUtils.isEmpty(identity) ? null : identity;
         }
 
         public void setIdentity(String identity) {
