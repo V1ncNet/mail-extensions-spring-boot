@@ -44,12 +44,12 @@ class DkimSignerAutoConfiguration {
         return signer;
     }
 
-    private void applyProperties(DkimProperties properties, DkimSigner signer) {
-        DkimProperties.SignerProperties signerProperties = properties.getSigner();
-        signer.setHeaderCanonicalization(signerProperties.getHeaderCanonicalization());
-        signer.setBodyCanonicalization(signerProperties.getBodyCanonicalization());
-        signer.setCheckDomainKey(signerProperties.isCheckDomainKey());
-        signer.setSigningAlgorithm(signerProperties.getSigningAlgorithm());
+    private void applyProperties(DkimProperties dkimProperties, DkimSigner signer) {
+        DkimProperties.SignerProperties properties = dkimProperties.getSigner();
+        signer.setHeaderCanonicalization(properties.getHeaderCanonicalization());
+        signer.setBodyCanonicalization(properties.getBodyCanonicalization());
+        signer.setCheckDomainKey(properties.isCheckDomainKey());
+        signer.setSigningAlgorithm(properties.getSigningAlgorithm());
     }
 
     @Bean
