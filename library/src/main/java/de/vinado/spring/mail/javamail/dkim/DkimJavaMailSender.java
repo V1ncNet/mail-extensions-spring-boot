@@ -52,10 +52,6 @@ public class DkimJavaMailSender extends JavaMailSenderImpl {
             }
 
             send(mimeMessages.toArray(new MimeMessage[0]));
-        } catch (MailException ex) {
-            throw ex;
-        } catch (MessagingException ex) {
-            throw new MailParseException(ex);
         } catch (Exception ex) {
             throw new MailPreparationException(ex);
         }
