@@ -56,7 +56,7 @@ public class DkimProperties {
      */
     public static class SignerProperties {
 
-        private Canonicalization headerCanonicalization = Canonicalization.RELAXED;
+        private Canonicalization headerCanonicalization = Canonicalization.SIMPLE;
         private Canonicalization bodyCanonicalization = Canonicalization.RELAXED;
         private boolean checkDomainKey = true;
         private SigningAlgorithm signingAlgorithm = SigningAlgorithm.SHA256_WITH_RSA;
