@@ -65,3 +65,7 @@ dkim.signer.check-domain-key=true
 
 To learn more about the identity and canonicalization read the [specification](https://tools.ietf.org/html/rfc6376)
 about DKIM.
+
+## Licence
+
+Apache License 2.0 - [Vinado](https://vinado.de) - Built with :heart: in Dresden
