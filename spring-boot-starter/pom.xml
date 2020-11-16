@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.vinado.boot</groupId>
         <artifactId>spring-boot-dkim-javamail</artifactId>
-        <version>1.0.0-rc2</version>
+        <version>1.0.0-rc3-SNAPSHOT</version>
     </parent>
 
     <artifactId>spring-boot-starter-dkim-javamail</artifactId>
@@ -25,12 +25,12 @@
         <dependency>
             <groupId>de.vinado.boot</groupId>
             <artifactId>spring-boot-autoconfigure-dkim-javamail</artifactId>
-            <version>1.0.0-rc2</version>
+            <version>1.0.0-rc3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>de.vinado.spring</groupId>
             <artifactId>dkim-javamail</artifactId>
-            <version>1.0.0-rc2</version>
+            <version>1.0.0-rc3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
