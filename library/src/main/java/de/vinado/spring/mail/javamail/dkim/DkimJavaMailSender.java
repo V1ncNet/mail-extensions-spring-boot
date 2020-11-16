@@ -35,18 +35,10 @@ public class DkimJavaMailSender extends JavaMailSenderImpl {
         for (SimpleMailMessage simpleMessage : simpleMessages) {
             MimeMailMessage message = new MimeMailMessage(createMimeMessage());
             simpleMessage.copyTo(message);
-            mimeMessages.add(createSignedMimeMessage(message));
+            mimeMessages.add(createSignedMimeMessage(message.getMimeMessage()));
         }
 
         doSend(mimeMessages.toArray(new MimeMessage[0]), simpleMessages);
-    }
-
-    public MimeMessage createSignedMimeMessage(MimeMailMessage message) throws MailException {
-        try {
-            return new DkimMessage(message.getMimeMessage(), signer);
-        } catch (MessagingException e) {
-            throw new MailParseException("Could not parse raw MIME content", e);
-        }
     }
 
     @Override
@@ -69,6 +61,14 @@ public class DkimJavaMailSender extends JavaMailSenderImpl {
         }
     }
 
+    /**
+     * This implementation creates a {@link DkimMessage} which is signed off with the configured private key before
+     * shipment.
+     *
+     * @param message must not be {@code null}
+     * @return new {@link DkimMessage}
+     * @throws MailException in case copying raw data from the original to the signable message fails
+     */
     public MimeMessage createSignedMimeMessage(MimeMessage message) throws MailException {
         try {
             return new DkimMessage(message, signer);
