@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.vinado.boot</groupId>
     <artifactId>spring-boot-dkim-javamail</artifactId>
-    <version>1.0.0-rc2-SNAPSHOT</version>
+    <version>1.0.0-rc2</version>
     <packaging>pom</packaging>
 
     <name>spring-boot-dkim-javamail</name>
@@ -29,7 +28,7 @@
         <connection>scm:git:git://github.com/V1ncNet/spring-boot-dkim-javamail.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-dkim-javamail.git</developerConnection>
         <url>https://github.com/V1ncNet/spring-boot-dkim-javamail</url>
-        <tag>v@{project.version}</tag>
+        <tag>v1.0.0-rc2</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
