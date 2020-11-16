@@ -28,7 +28,7 @@ so Maven can resolve the dependency. Other dependencies resolve as usual.
 	<dependency>
 	    <groupId>com.github.V1ncNet.spring-boot-dkim-javamail</groupId>
 	    <artifactId>spring-boot-starter-dkim-javamail</artifactId>
-	    <version>v1.0.0-rc2</version>
+	    <version>v1.0.0</version>
 	</dependency>
 ```
 
