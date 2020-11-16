@@ -36,12 +36,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>de.vinado.spring</groupId>
             <artifactId>dkim-javamail</artifactId>
             <version>1.0.0-rc2-SNAPSHOT</version>

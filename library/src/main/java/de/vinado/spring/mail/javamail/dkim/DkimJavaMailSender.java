@@ -1,8 +1,9 @@
 package de.vinado.spring.mail.javamail.dkim;
 
-import lombok.extern.slf4j.Slf4j;
 import net.markenwerk.utils.mail.dkim.DkimMessage;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailPreparationException;
@@ -22,8 +23,9 @@ import java.util.List;
  *
  * @author Vincent Nadoll
  */
-@Slf4j
 public class DkimJavaMailSender extends JavaMailSenderImpl {
+
+    private static final Logger log = LoggerFactory.getLogger(DkimJavaMailSender.class);
 
     private final DkimSigner signer;
 

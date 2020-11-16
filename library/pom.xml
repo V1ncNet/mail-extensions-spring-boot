@@ -27,12 +27,6 @@
             <version>5.2.10.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>net.markenwerk</groupId>
             <artifactId>utils-mail-dkim</artifactId>
             <version>1.4.0</version>
