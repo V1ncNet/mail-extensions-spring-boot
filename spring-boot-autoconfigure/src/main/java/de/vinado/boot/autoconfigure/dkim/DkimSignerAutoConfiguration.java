@@ -46,10 +46,13 @@ class DkimSignerAutoConfiguration {
 
     private void applyProperties(DkimProperties dkimProperties, DkimSigner signer) {
         DkimProperties.SignerProperties properties = dkimProperties.getSigner();
+        signer.setIdentity(properties.getIdentity());
         signer.setHeaderCanonicalization(properties.getHeaderCanonicalization());
         signer.setBodyCanonicalization(properties.getBodyCanonicalization());
         signer.setCheckDomainKey(properties.isCheckDomainKey());
         signer.setSigningAlgorithm(properties.getSigningAlgorithm());
+        signer.setLengthParam(properties.isLengthParam());
+        signer.setCopyHeaderFields(properties.isCopyHeaderFields());
     }
 
     @Bean

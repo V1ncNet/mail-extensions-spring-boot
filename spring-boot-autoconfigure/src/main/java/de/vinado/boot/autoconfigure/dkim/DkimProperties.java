@@ -56,10 +56,21 @@ public class DkimProperties {
      */
     public static class SignerProperties {
 
+        private String identity = null;
         private Canonicalization headerCanonicalization = Canonicalization.SIMPLE;
         private Canonicalization bodyCanonicalization = Canonicalization.RELAXED;
         private boolean checkDomainKey = true;
         private SigningAlgorithm signingAlgorithm = SigningAlgorithm.SHA256_WITH_RSA;
+        private boolean lengthParam = true;
+        private boolean copyHeaderFields = false;
+
+        public String getIdentity() {
+            return identity;
+        }
+
+        public void setIdentity(String identity) {
+            this.identity = identity;
+        }
 
         public Canonicalization getHeaderCanonicalization() {
             return headerCanonicalization;
@@ -91,6 +102,22 @@ public class DkimProperties {
 
         public void setSigningAlgorithm(SigningAlgorithm signingAlgorithm) {
             this.signingAlgorithm = signingAlgorithm;
+        }
+
+        public boolean isLengthParam() {
+            return lengthParam;
+        }
+
+        public void setLengthParam(boolean lengthParam) {
+            this.lengthParam = lengthParam;
+        }
+
+        public boolean isCopyHeaderFields() {
+            return copyHeaderFields;
+        }
+
+        public void setCopyHeaderFields(boolean copyHeaderFields) {
+            this.copyHeaderFields = copyHeaderFields;
         }
     }
 }
