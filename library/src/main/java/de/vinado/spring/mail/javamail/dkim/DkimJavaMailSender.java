@@ -2,8 +2,6 @@ package de.vinado.spring.mail.javamail.dkim;
 
 import net.markenwerk.utils.mail.dkim.DkimMessage;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailPreparationException;
@@ -25,8 +23,6 @@ import java.util.List;
  */
 public class DkimJavaMailSender extends JavaMailSenderImpl {
 
-    private static final Logger log = LoggerFactory.getLogger(DkimJavaMailSender.class);
-
     private final DkimSigner signer;
 
     public DkimJavaMailSender(DkimSigner signer) {
@@ -45,14 +41,12 @@ public class DkimJavaMailSender extends JavaMailSenderImpl {
         doSend(mimeMessages.toArray(new MimeMessage[0]), simpleMessages);
     }
 
-    public MimeMessage createSignedMimeMessage(MimeMailMessage message) {
+    public MimeMessage createSignedMimeMessage(MimeMailMessage message) throws MailException {
         try {
             return new DkimMessage(message.getMimeMessage(), signer);
         } catch (MessagingException e) {
-            log.warn("DKIM messages threw a low-level exception", e);
+            throw new MailParseException("Could not parse raw MIME content", e);
         }
-
-        return message.getMimeMessage();
     }
 
     @Override
@@ -75,13 +69,11 @@ public class DkimJavaMailSender extends JavaMailSenderImpl {
         }
     }
 
-    public MimeMessage createSignedMimeMessage(MimeMessage message) {
+    public MimeMessage createSignedMimeMessage(MimeMessage message) throws MailException {
         try {
             return new DkimMessage(message, signer);
         } catch (MessagingException e) {
-            log.warn("DKIM messages threw a low-level exception", e);
+            throw new MailParseException("Could not parse raw MIME content", e);
         }
-
-        return message;
     }
 }
