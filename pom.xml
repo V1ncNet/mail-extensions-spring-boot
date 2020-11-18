@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <name>spring-boot-dkim-javamail</name>
-    <description>Autoconfigureable Spring JavaMail extension</description>
+    <description>Parent for Spring Boot Starter which autoconfigures a DKIM JavaMailSender</description>
     <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
 
     <licenses>

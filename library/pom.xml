@@ -10,7 +10,7 @@
 
     <groupId>de.vinado.spring</groupId>
     <artifactId>dkim-javamail</artifactId>
-    <description>Adapts the DKIM library to String's JavaMailSender</description>
+    <description>DKIM-enabled JavaMailSender</description>
     <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
 
     <dependencies>
