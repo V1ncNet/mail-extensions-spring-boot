@@ -9,40 +9,35 @@ email you must configure your DNS. This authentication method is called DKIM (Do
 
 ## Usage
 
-Include the spring-boot-starter-dkim-javamail dependency in your `pom.xml` and adjust your `application.properties` or
+Include the `spring-boot-starter-dkim-javamail` dependency in your `pom.xml` and adjust your `application.properties` or
 `application.yml` as described in [Configuration](#Configuration).
 
-The starter is hosted in the [JitPack repository](https://jitpack.io/). You must include this repository in your POM
-so Maven can resolve the dependency. Other dependencies resolve as usual.
+The starter, as well as the other artifacts are hosted in the
+[Maven Central Repository](https://search.maven.org/artifact/de.vinado.boot/spring-boot-starter-dkim-javamail/1.0.1/jar).
+You can use it with the following coordinates:
 
 ```xml
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+<dependency>
+    <groupId>de.vinado.boot</groupId>
+    <artifactId>spring-boot-starter-dkim-javamail</artifactId>
+    <version>1.0.1</version>
+</dependency>
 ```
 
-```xml
-	<dependency>
-	    <groupId>com.github.V1ncNet.spring-boot-dkim-javamail</groupId>
-	    <artifactId>spring-boot-starter-dkim-javamail</artifactId>
-	    <version>v1.0.0</version>
-	</dependency>
-```
+Version `v1.0.0` is still available in the
+[JitPack repository](https://jitpack.io/#V1ncNet/spring-boot-dkim-javamail/v1.0.0).
 
 ## Setup
 
 Due to the Spring Boot Start, there is no coding required to include the project. Still, there are a few things that are
 required for emails to be signed and verified. Read the
-[developer documentation](https://github.com/markenwerk/java-utils-mail-dkim/blob/master/README.MD) in the original
-library for complete setup instructions on how to create an RSA keypair and properly configure DNS. It's very detailed.
+[developer documentation](https://github.com/markenwerk/java-utils-mail-dkim#setup) in the signer-library for complete
+setup instructions on how to create an RSA keypair and properly configure DNS.
 
 
 ### Configuration
 
-The starter uses auto configuration to get around Java-based adjustments. The mandatory configuration looks like this:
+The starter uses auto configuration to avoid Java-based adjustments. The mandatory configuration looks like this:
 
 ```properties
 dkim.signing-domain=domain.tld
