@@ -66,7 +66,7 @@ public class DkimProperties {
         private boolean copyHeaderFields = false;
 
         public String getIdentity() {
-            return StringUtils.isEmpty(identity) ? null : identity;
+            return StringUtils.hasText(identity) ? identity : null;
         }
 
         public void setIdentity(String identity) {
