@@ -40,8 +40,8 @@
         <maven.java.target>1.8</maven.java.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-boot.version>2.4.1</spring-boot.version>
-        <spring-javamail.version>5.3.2</spring-javamail.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
+        <spring-javamail.version>5.3.4</spring-javamail.version>
         <utils-mail-dkim.version>1.4.0</utils-mail-dkim.version>
     </properties>
 
