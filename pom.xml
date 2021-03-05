@@ -28,7 +28,6 @@
         <connection>scm:git:git://github.com/V1ncNet/spring-boot-dkim-javamail.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-dkim-javamail.git</developerConnection>
         <url>https://github.com/V1ncNet/spring-boot-dkim-javamail</url>
-        <tag>v1.2.1</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
