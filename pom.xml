@@ -43,6 +43,12 @@
         <spring-boot.version>2.4.3</spring-boot.version>
         <spring-javamail.version>5.3.4</spring-javamail.version>
         <utils-mail-dkim.version>1.4.0</utils-mail-dkim.version>
+        <slf4j.version>1.7.30</slf4j.version>
+
+        <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <mockito.version>3.6.28</mockito.version>
+        <assertj.version>3.18.1</assertj.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
     <modules>
@@ -62,6 +68,11 @@
                 <groupId>net.markenwerk</groupId>
                 <artifactId>utils-mail-dkim</artifactId>
                 <version>${utils-mail-dkim.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
 
             <dependency>
@@ -94,10 +105,41 @@
                 <artifactId>spring-boot-configuration-processor</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-test</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
