@@ -42,7 +42,9 @@ The starter uses auto configuration to avoid Java-based adjustments. The mandato
 ```properties
 dkim.signing-domain=domain.tld
 dkim.selector=default
-dkim.private-key=/path/to/your/private.key.der
+dkim.private-key=file:/path/to/your/private.key.der
+#dkim.private-key=classpath:/path/to/your/private.key.der
+#dkim.private-key=/path/to/your/private.key.der
 ```
 
 The example assumes your TXT record uses the domain `default._domainkey.domain.tld`. The following example contains
