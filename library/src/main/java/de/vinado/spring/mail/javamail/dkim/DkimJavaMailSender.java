@@ -4,15 +4,14 @@ import net.markenwerk.utils.mail.dkim.DkimMessage;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailParseException;
-import org.springframework.mail.MailPreparationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMailMessage;
-import org.springframework.mail.javamail.MimeMessagePreparator;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,19 +41,12 @@ public class DkimJavaMailSender extends JavaMailSenderImpl {
     }
 
     @Override
-    public void send(MimeMessagePreparator... mimeMessagePreparators) throws MailException {
-        try {
-            List<MimeMessage> mimeMessages = new ArrayList<>(mimeMessagePreparators.length);
-            for (MimeMessagePreparator preparator : mimeMessagePreparators) {
-                MimeMessage mimeMessage = createMimeMessage();
-                preparator.prepare(mimeMessage);
-                mimeMessages.add(createSignedMimeMessage(mimeMessage));
-            }
+    public void send(MimeMessage... mimeMessages) throws MailException {
+        MimeMessage[] signedMessages = Arrays.stream(mimeMessages)
+            .map(this::createSignedMimeMessage)
+            .toArray(MimeMessage[]::new);
 
-            send(mimeMessages.toArray(new MimeMessage[0]));
-        } catch (Exception ex) {
-            throw new MailPreparationException(ex);
-        }
+        super.send(signedMessages);
     }
 
     /**
