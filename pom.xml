@@ -4,7 +4,7 @@
 
     <groupId>de.vinado.boot</groupId>
     <artifactId>spring-boot-dkim-javamail</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>spring-boot-dkim-javamail</name>
@@ -28,7 +28,7 @@
         <connection>scm:git:git://github.com/V1ncNet/spring-boot-dkim-javamail.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-dkim-javamail.git</developerConnection>
         <url>https://github.com/V1ncNet/spring-boot-dkim-javamail</url>
-        <tag>v1.2.0</tag>
+        <tag>v1.1.0</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
