@@ -10,13 +10,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import java.io.IOException;
@@ -43,12 +42,11 @@ class DkimSignerAutoConfiguration {
     @Bean
     @Conditional(PrivateKeyNotEmpty.class)
     @ConditionalOnMissingBean
-    DkimSigner dkimSigner(DkimProperties properties) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
-        String location = properties.getPrivateKey();
-        ResourceLoader loader = new DefaultResourceLoader();
-        Resource resource = loader.getResource(location);
+    DkimSigner dkimSigner(DkimProperties properties, ApplicationContext context) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+        Resource resource = properties.getPrivateKey();
 
-        if (resource.getClass().getSimpleName().equals("ClassPathContextResource")) {
+        if (!resource.exists()) {
+            String location = context.getEnvironment().getProperty("dkim.private-key");
             log.warn("Referencing property [dkim.private-key] with an absolute path is deprecated. You should use the classpath: or file: protocols.");
             resource = new FileSystemResource(location);
         }

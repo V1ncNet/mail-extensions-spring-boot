@@ -3,6 +3,7 @@ package de.vinado.boot.autoconfigure.dkim;
 import net.markenwerk.utils.mail.dkim.Canonicalization;
 import net.markenwerk.utils.mail.dkim.SigningAlgorithm;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.io.Resource;
 import org.springframework.util.StringUtils;
 
 /**
@@ -15,7 +16,7 @@ public class DkimProperties {
 
     private String signingDomain;
     private String selector;
-    private String privateKey;
+    private Resource privateKey;
     private SignerProperties signer = new SignerProperties();
 
     public String getSigningDomain() {
@@ -34,11 +35,11 @@ public class DkimProperties {
         this.selector = selector;
     }
 
-    public String getPrivateKey() {
+    public Resource getPrivateKey() {
         return privateKey;
     }
 
-    public void setPrivateKey(String privateKey) {
+    public void setPrivateKey(Resource privateKey) {
         this.privateKey = privateKey;
     }
 
