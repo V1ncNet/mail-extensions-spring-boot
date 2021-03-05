@@ -13,14 +13,14 @@ Include the `spring-boot-starter-dkim-javamail` dependency in your `pom.xml` and
 `application.yml` as described in [Configuration](#Configuration).
 
 The starter, as well as the other artifacts are hosted in the
-[Maven Central Repository](https://search.maven.org/artifact/de.vinado.boot/spring-boot-starter-dkim-javamail/1.2.0/jar).
+[Maven Central Repository](https://search.maven.org/artifact/de.vinado.boot/spring-boot-starter-dkim-javamail/1.2.1/jar).
 You can use it with the following coordinates:
 
 ```xml
 <dependency>
     <groupId>de.vinado.boot</groupId>
     <artifactId>spring-boot-starter-dkim-javamail</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 </dependency>
 ```
 
