@@ -17,6 +17,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>net.markenwerk</groupId>
