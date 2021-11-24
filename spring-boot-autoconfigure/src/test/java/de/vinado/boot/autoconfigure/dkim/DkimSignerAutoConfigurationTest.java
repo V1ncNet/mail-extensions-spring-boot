@@ -12,8 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class DkimSignerAutoConfigurationTest {
 
-    private static final String PWD = System.getProperty("user.dir");
-
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
         .withConfiguration(AutoConfigurations.of(DkimSignerAutoConfiguration.class));
 
@@ -22,11 +20,6 @@ class DkimSignerAutoConfigurationTest {
         this.contextRunner
             .withPropertyValues("dkim.signing-domain=domain.tld")
             .run(context -> assertThat(context).doesNotHaveBean(DkimSigner.class));
-    }
-
-    @Test
-    void absoluteKeyLocation_shouldCreateDkimSignerBean() {
-        assertSuccessfulDkimBeanCreation(String.format("%s/src/test/resources/test.key.der", PWD));
     }
 
     @Test

@@ -2,19 +2,15 @@ package de.vinado.boot.autoconfigure.dkim;
 
 import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSender;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
 
@@ -37,20 +33,11 @@ import java.util.Properties;
 @ConditionalOnProperty(prefix = "dkim", name = {"selector", "signing-domain", "private-key"})
 class DkimSignerAutoConfiguration {
 
-    public static final Logger log = LoggerFactory.getLogger(DkimSignerAutoConfiguration.class);
-
     @Bean
     @Conditional(PrivateKeyNotEmpty.class)
     @ConditionalOnMissingBean
-    DkimSigner dkimSigner(DkimProperties properties, ApplicationContext context) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+    DkimSigner dkimSigner(DkimProperties properties) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
         Resource resource = properties.getPrivateKey();
-
-        if (!resource.exists()) {
-            String location = context.getEnvironment().getProperty("dkim.private-key");
-            log.warn("Referencing property [dkim.private-key] with an absolute path is deprecated. You should use the classpath: or file: protocols.");
-            resource = new FileSystemResource(location);
-        }
-
         DkimSigner signer = new DkimSigner(properties.getSigningDomain(), properties.getSelector(), resource.getInputStream());
         applyProperties(properties, signer);
         return signer;
