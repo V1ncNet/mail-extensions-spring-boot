@@ -41,6 +41,9 @@
 
         <spring-boot.version>2.4.3</spring-boot.version>
         <utils-mail-dkim.version>1.4.0</utils-mail-dkim.version>
+        <jakarta-mail.version>1.6.4</jakarta-mail.version> <!-- Must be same as Markenwerk's DKIM utility-->
+
+        <javamail-utilities.version>1.0.0-SNAPSHOT</javamail-utilities.version>
 
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -50,6 +53,7 @@
     </properties>
 
     <modules>
+        <module>utilities</module>
         <module>library</module>
         <module>spring-boot-starter</module>
         <module>spring-boot-autoconfigure</module>
@@ -80,6 +84,11 @@
                 <groupId>de.vinado.spring</groupId>
                 <artifactId>dkim-javamail</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.vinado.spring</groupId>
+                <artifactId>javamail-utilities</artifactId>
+                <version>${javamail-utilities.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
