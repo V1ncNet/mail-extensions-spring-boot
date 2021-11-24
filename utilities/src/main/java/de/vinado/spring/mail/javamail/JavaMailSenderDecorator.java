@@ -1,10 +1,10 @@
 package de.vinado.spring.mail.javamail;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.util.Assert;
 
 import javax.mail.internet.MimeMessage;
 import java.io.InputStream;
@@ -14,10 +14,15 @@ import java.io.InputStream;
  *
  * @author Vincent Nadoll
  */
-@RequiredArgsConstructor
 public abstract class JavaMailSenderDecorator implements JavaMailSender {
 
     private final JavaMailSender delegate;
+
+    public JavaMailSenderDecorator(JavaMailSender delegate) {
+        Assert.notNull(delegate, "Delegate JavaMailSender must not be null");
+
+        this.delegate = delegate;
+    }
 
     /**
      * {@inheritDoc}
