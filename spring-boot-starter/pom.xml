@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.vinado.boot</groupId>
         <artifactId>spring-boot-dkim-javamail</artifactId>
-        <version>1.2.2-SNAPSHOT</version>
+        <version>1.2.2</version>
     </parent>
 
     <artifactId>spring-boot-starter-dkim-javamail</artifactId>
