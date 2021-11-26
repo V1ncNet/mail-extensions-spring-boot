@@ -1,6 +1,7 @@
 package de.vinado.boot.autoconfigure.dkim;
 
 import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSender;
+import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSenderDecoratorFactory;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -57,12 +59,18 @@ class DkimSignerAutoConfiguration {
     @Bean
     @ConditionalOnBean(DkimSigner.class)
     DkimJavaMailSender mailSender(MailProperties mailProperties, DkimSigner signer) {
-        DkimJavaMailSender sender = new DkimJavaMailSender(signer);
-        applyProperties(mailProperties, sender);
+        DkimJavaMailSenderDecoratorFactory factory = new DkimJavaMailSenderDecoratorFactory(signer);
+        JavaMailSenderImpl delegate = mailSender(mailProperties);
+        return factory.decorate(delegate);
+    }
+
+    JavaMailSenderImpl mailSender(MailProperties properties) {
+        JavaMailSenderImpl sender = new JavaMailSenderImpl();
+        applyProperties(properties, sender);
         return sender;
     }
 
-    private void applyProperties(MailProperties properties, DkimJavaMailSender sender) {
+    private void applyProperties(MailProperties properties, JavaMailSenderImpl sender) {
         sender.setHost(properties.getHost());
         if (properties.getPort() != null) {
             sender.setPort(properties.getPort());

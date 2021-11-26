@@ -23,6 +23,15 @@
             <groupId>net.markenwerk</groupId>
             <artifactId>utils-mail-dkim</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.vinado.spring</groupId>
+            <artifactId>javamail-utilities</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>

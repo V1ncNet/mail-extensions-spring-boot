@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
 import javax.mail.internet.MimeMessage;
@@ -28,7 +29,8 @@ class DkimJavaMailSenderTest {
     @BeforeEach
     void setUp() {
         DkimSigner dkimSigner = mock(DkimSigner.class);
-        sender = spy(new DkimJavaMailSender(dkimSigner));
+        JavaMailSenderImpl delegate = new JavaMailSenderImpl();
+        sender = spy(new DkimJavaMailSender(delegate, dkimSigner));
     }
 
     @Test
