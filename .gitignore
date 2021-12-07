@@ -12,3 +12,7 @@ target/
 
 ### MacOS ###
 .DS_Store
+
+### Dotenv ###
+.env
+.env.leave
