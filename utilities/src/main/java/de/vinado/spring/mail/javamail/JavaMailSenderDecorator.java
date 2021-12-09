@@ -36,8 +36,8 @@ public abstract class JavaMailSenderDecorator implements JavaMailSender {
      * {@inheritDoc}
      */
     @Override
-    public MimeMessage createMimeMessage(InputStream inputStream) throws MailException {
-        return delegate.createMimeMessage(inputStream);
+    public MimeMessage createMimeMessage(InputStream contentStream) throws MailException {
+        return delegate.createMimeMessage(contentStream);
     }
 
     /**
