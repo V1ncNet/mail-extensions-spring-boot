@@ -7,6 +7,7 @@ import org.springframework.mail.javamail.JavaMailSender;
  *
  * @author Vincent Nadoll
  */
+@FunctionalInterface
 public interface JavaMailSenderDecoratorFactory {
 
     /**
