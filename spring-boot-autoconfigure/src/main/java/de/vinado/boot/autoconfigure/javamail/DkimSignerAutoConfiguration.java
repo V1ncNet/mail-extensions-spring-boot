@@ -25,7 +25,7 @@ import java.util.Properties;
 /**
  * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration Auto configuration} for DKIM signed email
  * support. Configures the {@link DkimSigner DKIM signer} as well as the {@link DkimJavaMailSender Mail Sender} based on
- * properties configuration.
+ * properties' configuration.
  *
  * @author Vincent Nadoll
  */
