@@ -1,4 +1,4 @@
-package de.vinado.spring.test.mail.javamail;
+package de.vinado.spring.mail.javamail;
 
 import lombok.Getter;
 import lombok.Setter;

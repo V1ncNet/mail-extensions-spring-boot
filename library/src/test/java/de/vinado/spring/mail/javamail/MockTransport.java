@@ -1,4 +1,4 @@
-package de.vinado.spring.test.mail.javamail;
+package de.vinado.spring.mail.javamail;
 
 import lombok.Getter;
 
@@ -11,6 +11,7 @@ import javax.mail.URLName;
 import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * @author Vincent Nadoll
@@ -46,4 +47,10 @@ public class MockTransport extends Transport {
         this.sentMessages.add(msg);
     }
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", MockTransport.class.getName() + "@" + hashCode() + "[", "]")
+            .add("session=" + session)
+            .toString();
+    }
 }

@@ -1,6 +1,6 @@
 package de.vinado.spring.mail.javamail.concurrent;
 
-import de.vinado.spring.test.mail.javamail.MockJavaMailSender;
+import de.vinado.spring.mail.javamail.MockJavaMailSender;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

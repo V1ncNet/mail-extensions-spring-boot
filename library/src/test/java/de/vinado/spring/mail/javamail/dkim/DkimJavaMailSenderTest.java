@@ -1,6 +1,6 @@
 package de.vinado.spring.mail.javamail.dkim;
 
-import de.vinado.spring.test.mail.javamail.MockJavaMailSender;
+import de.vinado.spring.mail.javamail.MockJavaMailSender;
 import lombok.SneakyThrows;
 import net.markenwerk.utils.mail.dkim.DkimMessage;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
