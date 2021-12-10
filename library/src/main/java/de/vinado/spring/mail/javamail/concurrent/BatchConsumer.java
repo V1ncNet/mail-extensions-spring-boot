@@ -29,8 +29,12 @@ class BatchConsumer implements Runnable {
                 if (log.isDebugEnabled()) log.debug("Dequeued {}", batch);
                 batch.dispatch(sender);
             } catch (InterruptedException e) {
-                log.error("Mail sender thread was interrupted", e);
-                break;
+                if (queue.isEmpty()) break;
+
+                if (log.isErrorEnabled()) log.error(""
+                    + "Mail sender thread was interrupted but queue was not empty. "
+                    + "Some Emails were not sent.");
+                throw new MailQueueException("Could not dequeue email batch", e);
             }
         }
     }

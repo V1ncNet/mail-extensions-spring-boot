@@ -81,7 +81,7 @@ public class ConcurrentJavaMailSender extends JavaMailSenderDecorator implements
         doSend(simpleMessages);
     }
 
-    private void doSend(Object[] messages) {
+    private void doSend(Object[] messages) throws MailException {
         resetDelayIfQueueIsEmpty();
 
         Batch[] batches = createBatches(messages);
@@ -120,13 +120,14 @@ public class ConcurrentJavaMailSender extends JavaMailSenderDecorator implements
             .mapToObj(i -> Arrays.copyOfRange(original, i, Math.min(i + batchSize, original.length)));
     }
 
-    private void enqueue(Batch[] batches) {
+    private void enqueue(Batch[] batches) throws MailException {
         for (Batch batch : batches) {
             try {
                 if (log.isDebugEnabled()) log.debug("Enqueueing {}", batch);
                 queue.put(batch);
             } catch (InterruptedException e) {
-                if (log.isErrorEnabled()) log.error("Unable to enqueue " + batch, e);
+                if (log.isErrorEnabled()) log.error("An error occurred while waiting for {} to be enqueued.", batch);
+                throw new MailQueueException("Could not enqueue email batch", e);
             }
         }
     }
