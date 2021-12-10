@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.vinado.boot</groupId>
-    <artifactId>spring-boot-dkim-javamail</artifactId>
+    <artifactId>spring-boot-javamail-utils</artifactId>
     <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>spring-boot-dkim-javamail</name>
-    <description>Parent for Spring Boot Starter which autoconfigures a DKIM JavaMailSender</description>
-    <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
+    <name>JavaMail Utils Parent</name>
+    <description>Parent for Spring Boot Starter that autoconfigures advanced JavaMail senders</description>
+    <url>https://github.com/V1ncNet/spring-boot-javamail-utils.git</url>
 
     <licenses>
         <license>
@@ -25,13 +26,13 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/V1ncNet/spring-boot-dkim-javamail.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-dkim-javamail.git</developerConnection>
-        <url>https://github.com/V1ncNet/spring-boot-dkim-javamail</url>
+        <connection>scm:git:git://github.com/V1ncNet/spring-boot-javamail-utils.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-javamail-utils.git</developerConnection>
+        <url>https://github.com/V1ncNet/spring-boot-javamail-utils</url>
     </scm>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/V1ncNet/spring-boot-dkim-javamail/issues</url>
+        <url>https://github.com/V1ncNet/spring-boot-javamail-utils/issues</url>
     </issueManagement>
 
     <properties>
@@ -43,7 +44,7 @@
         <utils-mail-dkim.version>1.4.0</utils-mail-dkim.version>
         <jakarta-mail.version>1.6.4</jakarta-mail.version> <!-- Must be same as Markenwerk's DKIM utility-->
 
-        <dkim-javamail.version>2.0.0-SNAPSHOT</dkim-javamail.version>
+        <javamail-utils.version>2.0.0-SNAPSHOT</javamail-utils.version>
 
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -76,13 +77,13 @@
 
             <dependency>
                 <groupId>de.vinado.boot</groupId>
-                <artifactId>spring-boot-autoconfigure-dkim-javamail</artifactId>
+                <artifactId>spring-boot-autoconfigure-javamail-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.vinado.spring</groupId>
-                <artifactId>dkim-javamail</artifactId>
-                <version>${dkim-javamail.version}</version>
+                <artifactId>javamail-utils</artifactId>
+                <version>${javamail-utils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
