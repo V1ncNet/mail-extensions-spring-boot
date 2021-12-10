@@ -21,6 +21,12 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
+ * {@link JavaMailSender} implementation that queues any messages and delays. The amount of concurrently enqueued
+ * emails as well as the cooldown between dequeue operations can be configured using the appropriate setter. Also, this
+ * sender SMTP transport operation doesn't block the main thread which becomes handy in case your SMTP provider provides
+ * a darn slow server. You can also overcome any rate limit or limit involving the amount of MIME messages to be present
+ * in an SMTP session.
+ *
  * @author Vincent Nadoll
  */
 @Slf4j

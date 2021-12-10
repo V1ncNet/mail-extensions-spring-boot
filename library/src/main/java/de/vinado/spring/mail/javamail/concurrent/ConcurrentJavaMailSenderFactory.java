@@ -7,6 +7,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import java.util.concurrent.ExecutorService;
 
 /**
+ * Factory implementation for decorating any {@link JavaMailSender} with the {@link ConcurrentJavaMailSender}
+ * implementation.
+ *
  * @author Vincent Nadoll
  */
 @RequiredArgsConstructor
