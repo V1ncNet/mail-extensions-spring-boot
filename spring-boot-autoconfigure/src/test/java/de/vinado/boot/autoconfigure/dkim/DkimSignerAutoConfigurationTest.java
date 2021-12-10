@@ -35,7 +35,7 @@ class DkimSignerAutoConfigurationTest {
     private void assertSuccessfulDkimBeanCreation(String privateKeyLocation) {
         String[] properties = {
             "javamail.dkim.signing-domain=domain.tld",
-            String.format("javamail.dkim.private-key=%s", privateKeyLocation),
+            "javamail.dkim.private-key=" + privateKeyLocation,
             "javamail.dkim.selector=default"
         };
 
