@@ -40,24 +40,24 @@ setup instructions on how to create an RSA keypair and properly configure DNS.
 The starter uses auto configuration to avoid Java-based adjustments. The mandatory configuration looks like this:
 
 ```properties
-dkim.signing-domain=domain.tld
-dkim.selector=default
-dkim.private-key=file:/path/to/your/private.key.der
-#dkim.private-key=classpath:/path/to/your/private.key.der
-#dkim.private-key=/path/to/your/private.key.der
+javamail.dkim.signing-domain=domain.tld
+javamail.dkim.selector=default
+javamail.dkim.private-key=file:/path/to/your/private.key.der
+#javamail.dkim.private-key=classpath:/path/to/your/private.key.der
+#javamail.dkim.private-key=/path/to/your/private.key.der
 ```
 
 The example assumes your TXT record uses the domain `default._domainkey.domain.tld`. The following example contains
 optional properties which configures the DKIM signer itself:
 
 ```properties
-dkim.signer.identity=
-dkim.signer.header-canonicalization=SIMPLE
-dkim.signer.body-canonicalization=RELAXED
-dkim.signer.signing-algorithm=SHA256_WITH_RSA
-dkim.signer.length-param=true
-dkim.signer.copy-header-fields=false
-dkim.signer.check-domain-key=true
+javamail.dkim.signer.identity=
+javamail.dkim.signer.header-canonicalization=SIMPLE
+javamail.dkim.signer.body-canonicalization=RELAXED
+javamail.dkim.signer.signing-algorithm=SHA256_WITH_RSA
+javamail.dkim.signer.length-param=true
+javamail.dkim.signer.copy-header-fields=false
+javamail.dkim.signer.check-domain-key=true
 ```
 
 To learn more about the identity and canonicalization read the [specification](https://tools.ietf.org/html/rfc6376)

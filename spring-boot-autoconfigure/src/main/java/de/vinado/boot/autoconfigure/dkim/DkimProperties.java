@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "dkim")
+@ConfigurationProperties(prefix = "javamail.dkim")
 public class DkimProperties {
 
     private String signingDomain;

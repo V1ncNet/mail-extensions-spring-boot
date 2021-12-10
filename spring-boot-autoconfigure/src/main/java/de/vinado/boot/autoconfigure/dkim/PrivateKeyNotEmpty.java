@@ -14,7 +14,7 @@ class PrivateKeyNotEmpty implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-        String privateKey = context.getEnvironment().getProperty("dkim.private-key");
+        String privateKey = context.getEnvironment().getProperty("javamail.dkim.private-key");
         return StringUtils.hasText(privateKey);
     }
 }

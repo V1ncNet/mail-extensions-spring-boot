@@ -18,7 +18,7 @@ class DkimSignerAutoConfigurationTest {
     @Test
     void missingProperty_shouldNotCreateDkimSignerBean() {
         this.contextRunner
-            .withPropertyValues("dkim.signing-domain=domain.tld")
+            .withPropertyValues("javamail.dkim.signing-domain=domain.tld")
             .run(context -> assertThat(context).doesNotHaveBean(DkimSigner.class));
     }
 
@@ -34,9 +34,9 @@ class DkimSignerAutoConfigurationTest {
 
     private void assertSuccessfulDkimBeanCreation(String privateKeyLocation) {
         String[] properties = {
-            "dkim.signing-domain=domain.tld",
-            String.format("dkim.private-key=%s", privateKeyLocation),
-            "dkim.selector=default"
+            "javamail.dkim.signing-domain=domain.tld",
+            String.format("javamail.dkim.private-key=%s", privateKeyLocation),
+            "javamail.dkim.selector=default"
         };
 
         this.contextRunner
