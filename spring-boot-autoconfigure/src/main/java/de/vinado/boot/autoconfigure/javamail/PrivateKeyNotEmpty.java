@@ -1,4 +1,4 @@
-package de.vinado.boot.autoconfigure.dkim;
+package de.vinado.boot.autoconfigure.javamail;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;

@@ -1,4 +1,4 @@
-package de.vinado.boot.autoconfigure.dkim;
+package de.vinado.boot.autoconfigure.javamail;
 
 import net.markenwerk.utils.mail.dkim.DkimSigner;
 import org.junit.jupiter.api.Test;

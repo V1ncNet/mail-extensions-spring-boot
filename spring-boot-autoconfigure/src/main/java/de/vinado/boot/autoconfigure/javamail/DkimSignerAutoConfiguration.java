@@ -1,4 +1,4 @@
-package de.vinado.boot.autoconfigure.dkim;
+package de.vinado.boot.autoconfigure.javamail;
 
 import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSender;
 import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSenderDecoratorFactory;

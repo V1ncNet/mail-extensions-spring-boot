@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-de.vinado.boot.autoconfigure.dkim.DkimSignerAutoConfiguration
+  de.vinado.boot.autoconfigure.javamail.DkimSignerAutoConfiguration
