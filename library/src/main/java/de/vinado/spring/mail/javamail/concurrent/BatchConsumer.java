@@ -26,7 +26,13 @@ class BatchConsumer implements Runnable {
         while (true) {
             try {
                 Batch batch = queue.take();
-                if (log.isDebugEnabled()) log.debug("Dequeued {}", batch);
+                if (log.isDebugEnabled()) {
+                    log.debug("Dequeued {}", batch);
+                    log.debug(queue.isEmpty()
+                        ? "Queue is empty now"
+                        : (queue.size() + " batch(es) remain in the queue"));
+                }
+
                 batch.dispatch(sender);
             } catch (InterruptedException e) {
                 if (queue.isEmpty()) break;
