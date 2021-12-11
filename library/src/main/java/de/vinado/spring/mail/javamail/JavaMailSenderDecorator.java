@@ -1,5 +1,6 @@
 package de.vinado.spring.mail.javamail;
 
+import lombok.Getter;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,6 +17,7 @@ import java.io.InputStream;
  */
 public abstract class JavaMailSenderDecorator implements JavaMailSender {
 
+    @Getter
     private final JavaMailSender delegate;
 
     public JavaMailSenderDecorator(JavaMailSender delegate) {
