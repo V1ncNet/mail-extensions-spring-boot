@@ -2,9 +2,9 @@ package de.vinado.boot.autoconfigure.javamail;
 
 import net.markenwerk.utils.mail.dkim.DkimSigner;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
+import static de.vinado.boot.autoconfigure.javamail.Properties.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -13,23 +13,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 class DkimSignerConfigurationTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
-        .withConfiguration(AutoConfigurations.of(DkimSignerConfiguration.class));
+        .withUserConfiguration(DkimSignerConfiguration.class);
 
     @Test
     void missingProperty_shouldNotCreateDkimSignerBean() {
         this.contextRunner
-            .withPropertyValues("javamail.dkim.signing-domain=domain.tld")
+            .withPropertyValues("javamail.dkim.signing-domain=" + DKIM_SIGNING_DOMAIN)
             .run(context -> assertThat(context).doesNotHaveBean(DkimSigner.class));
     }
 
     @Test
     void fileUri_shouldCreateDkimSignerBean() {
-        assertSuccessfulDkimBeanCreation("file:src/test/resources/test.key.der");
+        assertSuccessfulDkimBeanCreation("file:src/test/resources/" + DKIM_PRIVATE_KEY_LOCATION);
     }
 
     @Test
     void classpathUri_shouldCreateDkimSignerBean() {
-        assertSuccessfulDkimBeanCreation("classpath:test.key.der");
+        assertSuccessfulDkimBeanCreation("classpath:" + DKIM_PRIVATE_KEY_LOCATION);
     }
 
     private void assertSuccessfulDkimBeanCreation(String privateKeyLocation) {
