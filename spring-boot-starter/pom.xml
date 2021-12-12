@@ -5,15 +5,15 @@
 
     <parent>
         <groupId>de.vinado.boot</groupId>
-        <artifactId>spring-boot-javamail-utils</artifactId>
+        <artifactId>mail-extensions-spring-boot</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-boot-starter-javamail-utils</artifactId>
+    <artifactId>mail-extensions-spring-boot-starter</artifactId>
 
-    <name>JavaMail Utils Spring Boot Starter</name>
-    <description>Starter that autoconfigures advanced JavaMailSender implementations</description>
-    <url>https://github.com/V1ncNet/spring-boot-javamail-utils.git</url>
+    <name>JavaMail Extensions Spring Boot Starter</name>
+    <description>Starter that provides autoconfigurations for advanced JavaMailSender implementations</description>
+    <url>https://github.com/V1ncNet/mail-extensions-spring-boot.git</url>
 
     <dependencies>
         <dependency>
@@ -22,11 +22,11 @@
         </dependency>
         <dependency>
             <groupId>de.vinado.boot</groupId>
-            <artifactId>spring-boot-autoconfigure-javamail-utils</artifactId>
+            <artifactId>mail-extensions-spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>de.vinado.spring</groupId>
-            <artifactId>javamail-utils</artifactId>
+            <artifactId>mail-extensions</artifactId>
         </dependency>
     </dependencies>
 </project>

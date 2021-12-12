@@ -4,17 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-boot-javamail-utils</artifactId>
+        <artifactId>mail-extensions-spring-boot</artifactId>
         <groupId>de.vinado.boot</groupId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>de.vinado.spring</groupId>
-    <artifactId>javamail-utils</artifactId>
+    <artifactId>mail-extensions</artifactId>
 
-    <name>JavaMail Utils Library</name>
+    <name>JavaMail Extensions Library</name>
     <description>Library that provides advanced JavaMailSender implementations</description>
-    <url>https://github.com/V1ncNet/spring-boot-javamail-utils.git</url>
+    <url>https://github.com/V1ncNet/mail-extensions-spring-boot.git</url>
 
     <dependencies>
         <dependency>
