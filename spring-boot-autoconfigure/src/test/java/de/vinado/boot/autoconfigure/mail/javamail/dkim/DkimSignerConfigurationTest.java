@@ -1,10 +1,10 @@
-package de.vinado.boot.autoconfigure.javamail;
+package de.vinado.boot.autoconfigure.mail.javamail.dkim;
 
 import net.markenwerk.utils.mail.dkim.DkimSigner;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-import static de.vinado.boot.autoconfigure.javamail.Properties.*;
+import static de.vinado.boot.autoconfigure.mail.javamail.Properties.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

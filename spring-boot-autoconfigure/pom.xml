@@ -11,7 +11,7 @@
 
     <artifactId>mail-extensions-spring-boot-autoconfigure</artifactId>
 
-    <name>JavaMail Extensions Spring Boot Auto-Configuration</name>
+    <name>Spring Boot Mail Extensions Auto-Configuration</name>
     <description>Auto-Configuration that enables advanced JavaMail senders</description>
     <url>https://github.com/V1ncNet/mail-extensions-spring-boot.git</url>
 
@@ -48,6 +48,11 @@
         <dependency>
             <groupId>de.vinado.spring</groupId>
             <artifactId>mail-extensions</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.markenwerk</groupId>
+            <artifactId>utils-mail-dkim</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

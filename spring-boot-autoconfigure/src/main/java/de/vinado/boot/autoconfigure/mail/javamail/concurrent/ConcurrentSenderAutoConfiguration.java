@@ -1,13 +1,9 @@
-package de.vinado.boot.autoconfigure.javamail;
+package de.vinado.boot.autoconfigure.mail.javamail.concurrent;
 
 import de.vinado.spring.mail.javamail.concurrent.ConcurrentJavaMailSender;
 import de.vinado.spring.mail.javamail.concurrent.ConcurrentJavaMailSenderFactory;
-import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSender;
-import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSenderDecoratorFactory;
-import net.markenwerk.utils.mail.dkim.DkimSigner;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,44 +18,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * {@link Configuration Configuration} for advanced {@link JavaMailSender} support. Depending which combination of
- * properties is set, different mail senders are bering instantiated.
- *
  * @author Vincent Nadoll
  */
 @Configuration(proxyBeanMethods = false)
-@AutoConfigureAfter(DkimSignerConfiguration.class)
-@EnableConfigurationProperties({MailProperties.class, ConcurrentJavaMailSenderProperties.class})
-class JavaMailSenderConfiguration {
-
-    @Bean("mailSender")
-    @ConditionalOnProperty(prefix = "javamail.concurrent", name = "enabled", havingValue = "false", matchIfMissing = true)
-    @ConditionalOnBean(DkimSigner.class)
-    DkimJavaMailSender dkimJavaMailSender(MailProperties mailProperties, DkimSigner dkimSigner) {
-        DkimJavaMailSenderDecoratorFactory factory = new DkimJavaMailSenderDecoratorFactory(dkimSigner);
-        JavaMailSenderImpl delegate = mailSender(mailProperties);
-        return factory.decorate(delegate);
-    }
+@ConditionalOnClass(JavaMailSender.class)
+@EnableConfigurationProperties({MailProperties.class, ConcurrentSenderProperties.class})
+public class ConcurrentSenderAutoConfiguration {
 
     @Bean("mailSender")
     @ConditionalOnProperty(prefix = "javamail.concurrent", name = "enabled", havingValue = "true")
-    @ConditionalOnBean(DkimSigner.class)
-    DkimJavaMailSender concurrentDkimJavaMailSender(MailProperties mailProperties,
-                                                    ConcurrentJavaMailSenderProperties concurrentSenderProperties,
-                                                    DkimSigner dkimSigner) {
-        DkimJavaMailSenderDecoratorFactory dkimSenderFactory = new DkimJavaMailSenderDecoratorFactory(dkimSigner);
-
-        JavaMailSenderImpl rootSender = mailSender(mailProperties);
-        ConcurrentJavaMailSender concurrentJavaMailSender = mailSender(concurrentSenderProperties, rootSender);
-
-        return dkimSenderFactory.decorate(concurrentJavaMailSender);
-    }
-
-    @Bean("mailSender")
-    @ConditionalOnProperty(prefix = "javamail.concurrent", name = "enabled", havingValue = "true")
-    @ConditionalOnMissingBean(DkimSigner.class)
+    @ConditionalOnMissingClass("net.markenwerk.utils.mail.dkim.DkimSigner")
     ConcurrentJavaMailSender concurrentJavaMailSender(MailProperties mailProperties,
-                                                      ConcurrentJavaMailSenderProperties concurrentSenderProperties) {
+                                                      ConcurrentSenderProperties concurrentSenderProperties) {
         JavaMailSenderImpl delegate = mailSender(mailProperties);
         return mailSender(concurrentSenderProperties, delegate);
     }
@@ -92,7 +62,7 @@ class JavaMailSenderConfiguration {
         return properties;
     }
 
-    ConcurrentJavaMailSender mailSender(ConcurrentJavaMailSenderProperties concurrentSenderProperties, JavaMailSender delegate) {
+    ConcurrentJavaMailSender mailSender(ConcurrentSenderProperties concurrentSenderProperties, JavaMailSender delegate) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         ConcurrentJavaMailSenderFactory concurrentSenderFactory = new ConcurrentJavaMailSenderFactory(executor);
 
@@ -101,7 +71,7 @@ class JavaMailSenderConfiguration {
         return concurrentJavaMailSender;
     }
 
-    private void applyProperties(ConcurrentJavaMailSenderProperties properties, ConcurrentJavaMailSender sender) {
+    private void applyProperties(ConcurrentSenderProperties properties, ConcurrentJavaMailSender sender) {
         sender.setBatchSize(properties.getBatchSize());
         sender.setCooldownMillis(properties.getCooldownMillis());
     }

@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  de.vinado.boot.autoconfigure.javamail.JavaMailUtilsAutoConfiguration
+  de.vinado.boot.autoconfigure.mail.javamail.concurrent.ConcurrentSenderAutoConfiguration,\
+  de.vinado.boot.autoconfigure.mail.javamail.dkim.DkimAutoConfiguration

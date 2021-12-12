@@ -12,8 +12,8 @@
     <groupId>de.vinado.spring</groupId>
     <artifactId>mail-extensions</artifactId>
 
-    <name>JavaMail Extensions Library</name>
-    <description>Library that provides advanced JavaMailSender implementations</description>
+    <name>Spring Framework Mail Extensions Library</name>
+    <description>Library that provides Spring Framework Mail extensions</description>
     <url>https://github.com/V1ncNet/mail-extensions-spring-boot.git</url>
 
     <dependencies>
@@ -25,6 +25,7 @@
         <dependency>
             <groupId>net.markenwerk</groupId>
             <artifactId>utils-mail-dkim</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

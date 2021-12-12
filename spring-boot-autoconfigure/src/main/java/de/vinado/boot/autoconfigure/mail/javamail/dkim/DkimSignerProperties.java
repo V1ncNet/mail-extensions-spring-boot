@@ -1,4 +1,4 @@
-package de.vinado.boot.autoconfigure.javamail;
+package de.vinado.boot.autoconfigure.mail.javamail.dkim;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ import org.springframework.util.StringUtils;
 @Getter
 @Setter
 @ConfigurationProperties(prefix = "javamail.dkim")
-public class DkimProperties {
+public class DkimSignerProperties {
 
     private String signingDomain;
     private String selector;

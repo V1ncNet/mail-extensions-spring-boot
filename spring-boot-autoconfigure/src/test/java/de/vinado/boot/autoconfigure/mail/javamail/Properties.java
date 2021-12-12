@@ -1,4 +1,4 @@
-package de.vinado.boot.autoconfigure.javamail;
+package de.vinado.boot.autoconfigure.mail.javamail;
 
 /**
  * @author Vincent Nadoll

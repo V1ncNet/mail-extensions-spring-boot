@@ -1,4 +1,4 @@
-package de.vinado.boot.autoconfigure.javamail;
+package de.vinado.boot.autoconfigure.mail.javamail.concurrent;
 
 
 import lombok.Getter;
@@ -13,7 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 @ConfigurationProperties("javamail.concurrent")
-public class ConcurrentJavaMailSenderProperties {
+public class ConcurrentSenderProperties {
 
     private boolean enabled;
     private int batchSize = 20;
