@@ -1,0 +1,21 @@
+# Default ignored files
+/shelf/
+/libraries/
+/workspace.xml
+# Datasource local storage ignored files
+dataSources/
+dataSources.ids
+dataSources.local.xml
+sqlDataSources.xml
+dynamic.xml
+uiDesigner.xml
+dbnavigator.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Maven with auto-import
+artifacts
+compiler.xml
+jarRepositories.xml
+modules.xml
+*.iml
+modules
