@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
+ * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration Auto-configuration} for DKIM signed MIME
+ * message support.
+ *
  * @author Vincent Nadoll
  */
 @Configuration(proxyBeanMethods = false)

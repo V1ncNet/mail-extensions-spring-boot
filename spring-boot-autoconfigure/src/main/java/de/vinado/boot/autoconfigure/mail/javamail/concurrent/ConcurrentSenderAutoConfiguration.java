@@ -18,6 +18,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration Auto-configuration} for concurrent mail
+ * dispatch support.
+ *
  * @author Vincent Nadoll
  */
 @Configuration(proxyBeanMethods = false)
