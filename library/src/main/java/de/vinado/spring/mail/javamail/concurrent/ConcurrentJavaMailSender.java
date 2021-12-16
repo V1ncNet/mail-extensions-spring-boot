@@ -8,6 +8,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.util.Assert;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -33,7 +34,6 @@ import javax.mail.internet.MimeMessage;
 public class ConcurrentJavaMailSender extends JavaMailSenderDecorator implements JavaMailSender {
 
     @Getter
-    @Setter
     private int batchSize = 20;
 
     @Getter
@@ -50,6 +50,11 @@ public class ConcurrentJavaMailSender extends JavaMailSenderDecorator implements
         this.delay = new AtomicLong(System.currentTimeMillis());
 
         startConsumer(threadPool, delegate);
+    }
+
+    public void setBatchSize(int batchSize) {
+        Assert.isTrue(batchSize > 0, "Batch size must be a positive integer");
+        this.batchSize = batchSize;
     }
 
     private void startConsumer(ExecutorService threadPool, JavaMailSender delegate) {

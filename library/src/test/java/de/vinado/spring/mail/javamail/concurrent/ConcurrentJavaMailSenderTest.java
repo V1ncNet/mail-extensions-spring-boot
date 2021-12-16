@@ -5,6 +5,8 @@ import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentMatchers;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -17,7 +19,9 @@ import java.util.concurrent.TimeUnit;
 import javax.mail.Message;
 import javax.mail.internet.MimeMessage;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -358,6 +362,37 @@ class ConcurrentJavaMailSenderTest {
         sentMessages = delegate.getSentMessages();
         assertEquals(1, sentMessages.size());
         assertEquals(mimeMessage_6, sentMessages.get(0));
+    }
+
+    @Test
+    @SneakyThrows
+    void configuringNegativeCooldownAndSendingUndersized_shouldDispatchImmediately() {
+        sender.setCooldownMillis(-1);
+
+        SimpleMailMessage simpleMessage = new SimpleMailMessage();
+        simpleMessage.setFrom("test@example.com");
+        simpleMessage.setTo("john.doe@example.com");
+        simpleMessage.setSubject("Ping");
+        simpleMessage.setText("Lorem Ipsum");
+
+        sender.send(simpleMessage);
+
+        executor.shutdown();
+        executor.awaitTermination(EXECUTION_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
+
+        verify(delegate, times(1)).send(ArgumentMatchers.<SimpleMailMessage[]>any());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {Integer.MIN_VALUE, -1, 0})
+    void configuringNonPositiveBatchSize_shouldThrowException(int batchSize) {
+        assertThrows(IllegalArgumentException.class, () -> sender.setBatchSize(batchSize));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, Integer.MAX_VALUE})
+    void configurePositiveBatchSize_shouldNotThrowException(int batchSize) {
+        assertDoesNotThrow(() -> sender.setBatchSize(batchSize));
     }
 
     @AfterEach
