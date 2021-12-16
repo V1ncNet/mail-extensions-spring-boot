@@ -6,7 +6,6 @@ import de.vinado.spring.mail.javamail.concurrent.ConcurrentJavaMailSenderFactory
 import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSender;
 import de.vinado.spring.mail.javamail.dkim.DkimJavaMailSenderDecoratorFactory;
 import net.markenwerk.utils.mail.dkim.DkimSigner;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -29,7 +28,6 @@ import java.util.concurrent.Executors;
  * @author Vincent Nadoll
  */
 @Configuration(proxyBeanMethods = false)
-@AutoConfigureAfter(DkimSignerConfiguration.class)
 @ConditionalOnClass(JavaMailSender.class)
 @EnableConfigurationProperties({MailProperties.class, DkimSignerProperties.class, ConcurrentSenderProperties.class})
 class DkimSenderConfiguration {
