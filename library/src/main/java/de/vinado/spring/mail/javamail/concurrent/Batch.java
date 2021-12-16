@@ -85,10 +85,12 @@ public class Batch implements Delayed {
 
     @RequiredArgsConstructor
     private enum Derivate {
+        // CHECKSTYLE.OFF: LineLength - Much more readable
         SIMPLE_MAIL_MESSAGE(SimpleMailMessage[].class, (sender, messages) -> sender.send((SimpleMailMessage[]) messages)),
         MIME_MESSAGE(MimeMessage[].class, (sender, messages) -> sender.send((MimeMessage[]) messages)),
         MIME_MESSAGE_PREPARATOR(MimeMessagePreparator[].class, (sender, messages) -> sender.send((MimeMessagePreparator[]) messages)),
         ;
+        // CHECKSTYLE.ON: LineLength
 
         private final Class<?> messageType;
         private final BiConsumer<JavaMailSender, Object[]> dispatcher;
