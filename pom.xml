@@ -131,7 +131,7 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <links>
-                        <link>https://docs.spring.io/spring-framework/docs/current/javadoc-api/</link>
+                        <link>https://docs.spring.io/spring-framework/docs/5.2.0.RELEASE/javadoc-api/</link>
                     </links>
                 </configuration>
                 <executions>

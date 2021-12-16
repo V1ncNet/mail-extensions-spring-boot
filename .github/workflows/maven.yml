@@ -46,7 +46,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: mvn -B javadoc:aggregate
       - name: Deploy API docs
-        if: success()
+        if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
