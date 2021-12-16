@@ -1,7 +1,7 @@
 # Spring Boot Mail Extensions
 
 This project aims to extend Spring's `JavaMailSender` with useful features. Therefore, the library provides two advanced
-sender extensions.
+sender extensions. Library and starters are compatible with Spring Framework >5.2.x and Spring Boot >2.2.x
 
 
 ## Library

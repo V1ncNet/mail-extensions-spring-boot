@@ -40,7 +40,7 @@
         <maven.java.target>1.8</maven.java.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-boot.version>2.4.3</spring-boot.version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
         <utils-mail-dkim.version>1.4.0</utils-mail-dkim.version>
         <jakarta-mail.version>1.6.4</jakarta-mail.version> <!-- Must be same as Markenwerk's DKIM utility-->
 
