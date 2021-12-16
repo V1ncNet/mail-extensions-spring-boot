@@ -4,13 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import java.util.List;
+import java.util.Properties;
 import javax.activation.FileTypeMap;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
-import java.util.List;
-import java.util.Properties;
 
 /**
  * @author Vincent Nadoll

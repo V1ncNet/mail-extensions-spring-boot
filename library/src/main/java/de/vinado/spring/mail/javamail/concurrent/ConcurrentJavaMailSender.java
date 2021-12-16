@@ -9,7 +9,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
-import javax.mail.internet.MimeMessage;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Arrays;
@@ -19,13 +18,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import javax.mail.internet.MimeMessage;
 
 /**
- * {@link JavaMailSender} implementation that queues any messages and delays. The amount of concurrently enqueued
- * emails as well as the cooldown between dequeue operations can be configured using the appropriate setter. Also, this
- * sender SMTP transport operation doesn't block the main thread which becomes handy in case your SMTP provider provides
- * a darn slow server. You can also overcome any rate limit or limit involving the amount of MIME messages to be present
- * in an SMTP session.
+ * {@link JavaMailSender} implementation that queues any messages and delays. The amount of concurrently enqueued emails
+ * as well as the cooldown between dequeue operations can be configured using the appropriate setter. Also, this sender
+ * SMTP transport operation doesn't block the main thread which becomes handy in case your SMTP provider provides a darn
+ * slow server. You can also overcome any rate limit or limit involving the amount of MIME messages to be present in an
+ * SMTP session.
  *
  * @author Vincent Nadoll
  */

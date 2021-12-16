@@ -7,8 +7,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.util.Assert;
 
-import javax.mail.internet.MimeMessage;
 import java.io.InputStream;
+import javax.mail.internet.MimeMessage;
 
 /**
  * Basic implementation of the decorator pattern proxying every method to its delegate.

@@ -40,6 +40,16 @@ public class ConcurrentSenderAutoConfiguration {
         return sender;
     }
 
+    ConcurrentJavaMailSender mailSender(ConcurrentSenderProperties concurrentSenderProperties,
+                                        JavaMailSender delegate) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ConcurrentJavaMailSenderFactory concurrentSenderFactory = new ConcurrentJavaMailSenderFactory(executor);
+
+        ConcurrentJavaMailSender concurrentJavaMailSender = concurrentSenderFactory.decorate(delegate);
+        applyProperties(concurrentSenderProperties, concurrentJavaMailSender);
+        return concurrentJavaMailSender;
+    }
+
     private void applyProperties(MailProperties properties, JavaMailSenderImpl sender) {
         sender.setHost(properties.getHost());
         if (properties.getPort() != null) {
@@ -56,23 +66,14 @@ public class ConcurrentSenderAutoConfiguration {
         }
     }
 
+    private void applyProperties(ConcurrentSenderProperties properties, ConcurrentJavaMailSender sender) {
+        sender.setBatchSize(properties.getBatchSize());
+        sender.setCooldownMillis(properties.getCooldownMillis());
+    }
+
     private Properties asProperties(Map<String, String> source) {
         Properties properties = new Properties();
         properties.putAll(source);
         return properties;
-    }
-
-    ConcurrentJavaMailSender mailSender(ConcurrentSenderProperties concurrentSenderProperties, JavaMailSender delegate) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        ConcurrentJavaMailSenderFactory concurrentSenderFactory = new ConcurrentJavaMailSenderFactory(executor);
-
-        ConcurrentJavaMailSender concurrentJavaMailSender = concurrentSenderFactory.decorate(delegate);
-        applyProperties(concurrentSenderProperties, concurrentJavaMailSender);
-        return concurrentJavaMailSender;
-    }
-
-    private void applyProperties(ConcurrentSenderProperties properties, ConcurrentJavaMailSender sender) {
-        sender.setBatchSize(properties.getBatchSize());
-        sender.setCooldownMillis(properties.getCooldownMillis());
     }
 }

@@ -7,9 +7,9 @@ import org.mockito.ArgumentMatchers;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
+import java.io.InputStream;
 import javax.mail.Message;
 import javax.mail.internet.MimeMessage;
-import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

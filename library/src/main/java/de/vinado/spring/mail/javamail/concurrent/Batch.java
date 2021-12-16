@@ -9,7 +9,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
-import javax.mail.internet.MimeMessage;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Arrays;
@@ -18,6 +17,7 @@ import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
+import javax.mail.internet.MimeMessage;
 
 /**
  * A generic implementation of {@link Delayed} holding supported MIME messages of any type.

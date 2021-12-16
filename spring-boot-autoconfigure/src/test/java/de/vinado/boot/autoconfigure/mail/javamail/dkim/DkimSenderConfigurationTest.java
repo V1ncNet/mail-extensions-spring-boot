@@ -11,7 +11,11 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import static de.vinado.boot.autoconfigure.mail.javamail.Properties.*;
+import static de.vinado.boot.autoconfigure.mail.javamail.Properties.DKIM_PRIVATE_KEY_LOCATION;
+import static de.vinado.boot.autoconfigure.mail.javamail.Properties.DKIM_SELECTOR;
+import static de.vinado.boot.autoconfigure.mail.javamail.Properties.DKIM_SIGNING_DOMAIN;
+import static de.vinado.boot.autoconfigure.mail.javamail.Properties.dkimPropertyPairs;
+import static de.vinado.boot.autoconfigure.mail.javamail.Properties.propertyPairs;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
