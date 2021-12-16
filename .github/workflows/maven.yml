@@ -1,0 +1,53 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up AdoptOpenJDK 8
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Lint sources
+        run: mvn -B checkstyle:check
+      - name: Compile sources
+        run: mvn -B compile test-compile
+      - name: Run tests
+        run: mvn -B test
+      - name: Package artifact
+        run: mvn -B -fae -DskipTests=true package
+
+      - name: Report Checkstyle results
+        if: always()
+        uses: jwgmeligmeyling/checkstyle-github-action@v1.2
+        with:
+          path: '**/checkstyle-result.xml'
+      - name: Report Surefire results
+        if: always()
+        uses: ScaCap/action-surefire-report@v1
+
+      - name: Aggregate JavaDoc
+        if: github.ref == 'refs/heads/main'
+        run: mvn -B javadoc:aggregate
+      - name: Deploy API docs
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: target/site/apidocs
