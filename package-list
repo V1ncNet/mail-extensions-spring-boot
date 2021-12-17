@@ -1,0 +1,5 @@
+de.vinado.boot.autoconfigure.mail.javamail.concurrent
+de.vinado.boot.autoconfigure.mail.javamail.dkim
+de.vinado.spring.mail.javamail
+de.vinado.spring.mail.javamail.concurrent
+de.vinado.spring.mail.javamail.dkim
