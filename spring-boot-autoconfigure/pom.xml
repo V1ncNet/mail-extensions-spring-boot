@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>de.vinado.boot</groupId>
-        <artifactId>spring-boot-dkim-javamail</artifactId>
-        <version>1.2.2</version>
+        <artifactId>mail-extensions-spring-boot</artifactId>
+        <version>2.0.0</version>
     </parent>
 
-    <artifactId>spring-boot-autoconfigure-dkim-javamail</artifactId>
-    <description>Autoconfiguration to enable the DKIM JavaMailSender</description>
-    <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
+    <artifactId>mail-extensions-spring-boot-autoconfigure</artifactId>
+
+    <name>Spring Boot Mail Extensions Auto-Configuration</name>
+    <description>Auto-Configuration that enables advanced JavaMail senders</description>
+    <url>https://github.com/V1ncNet/mail-extensions-spring-boot.git</url>
 
     <dependencies>
         <dependency>
@@ -36,10 +39,20 @@
             <artifactId>slf4j-nop</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>de.vinado.spring</groupId>
-            <artifactId>dkim-javamail</artifactId>
+            <artifactId>mail-extensions</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.markenwerk</groupId>
+            <artifactId>utils-mail-dkim</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

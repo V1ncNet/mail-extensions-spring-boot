@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.vinado.boot</groupId>
-    <artifactId>spring-boot-dkim-javamail</artifactId>
-    <version>1.2.2</version>
+    <artifactId>mail-extensions-spring-boot</artifactId>
+    <version>2.0.0</version>
     <packaging>pom</packaging>
 
-    <name>spring-boot-dkim-javamail</name>
-    <description>Parent for Spring Boot Starter which autoconfigures a DKIM JavaMailSender</description>
-    <url>https://github.com/V1ncNet/spring-boot-dkim-javamail.git</url>
+    <name>Spring Boot Mail Extensions Parent</name>
+    <description>Parent for Spring Boot Starters that autoconfigures advanced Spring Mail senders</description>
+    <url>https://github.com/V1ncNet/mail-extensions-spring-boot.git</url>
 
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -25,34 +26,40 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/V1ncNet/spring-boot-dkim-javamail.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/V1ncNet/spring-boot-dkim-javamail.git</developerConnection>
-        <url>https://github.com/V1ncNet/spring-boot-dkim-javamail</url>
+        <connection>scm:git:git://github.com/V1ncNet/mail-extensions-spring-boot.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/V1ncNet/mail-extensions-spring-boot.git</developerConnection>
+        <url>https://github.com/V1ncNet/mail-extensions-spring-boot</url>
     </scm>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/V1ncNet/spring-boot-dkim-javamail/issues</url>
+        <url>https://github.com/V1ncNet/mail-extensions-spring-boot/issues</url>
     </issueManagement>
 
     <properties>
         <maven.java.source>1.8</maven.java.source>
         <maven.java.target>1.8</maven.java.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <skipCheckstyle>false</skipCheckstyle>
 
-        <spring-boot.version>2.4.3</spring-boot.version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
         <utils-mail-dkim.version>1.4.0</utils-mail-dkim.version>
+
+        <mail-extensions.version>2.0.0</mail-extensions.version>
 
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
     </properties>
 
     <modules>
         <module>library</module>
-        <module>spring-boot-starter</module>
         <module>spring-boot-autoconfigure</module>
+        <module>spring-boot-starters/mail-extensions-all-spring-boot-starter</module>
+        <module>spring-boot-starters/mail-extensions-concurrent-javamail-spring-boot-starter</module>
+        <module>spring-boot-starters/mail-extensions-dkim-javamail-spring-boot-starter</module>
     </modules>
 
     <dependencyManagement>
@@ -73,13 +80,13 @@
 
             <dependency>
                 <groupId>de.vinado.boot</groupId>
-                <artifactId>spring-boot-autoconfigure-dkim-javamail</artifactId>
+                <artifactId>mail-extensions-spring-boot-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.vinado.spring</groupId>
-                <artifactId>dkim-javamail</artifactId>
-                <version>${project.version}</version>
+                <artifactId>mail-extensions</artifactId>
+                <version>${mail-extensions.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -124,7 +131,7 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <links>
-                        <link>https://docs.spring.io/spring-framework/docs/current/javadoc-api/</link>
+                        <link>https://docs.spring.io/spring-framework/docs/5.2.0.RELEASE/javadoc-api/</link>
                     </links>
                 </configuration>
                 <executions>
@@ -161,6 +168,35 @@
                                 <banDuplicatePomDependencyVersions/>
                             </rules>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.43</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                    <skip>${skipCheckstyle}</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
